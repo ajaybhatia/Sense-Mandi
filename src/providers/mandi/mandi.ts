@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { config } from './configuration';
 import 'rxjs/add/operator/map';
 
 /*
@@ -10,9 +11,13 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class MandiProvider {
+  url: string;
 
   constructor(public http: Http) {
-    console.log('Hello MandiProvider Provider');
+    this.url = `http://data.gov.in/api/datastore/resource.json?resource_id=9ef84268-d588-465a-a308-a864a43d0070&api-key=${config.key}`;
   }
 
+  getAllMandisInfo() {
+    return this.http.get(this.url).map(mandi => mandi.json());
+  }
 }

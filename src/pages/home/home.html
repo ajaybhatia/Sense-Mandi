@@ -5,4 +5,31 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-grid *ngIf="records">
+    <ion-row *ngFor="let record of records">
+      <ion-card>
+        <ion-card-header>
+          {{ record.commodity }}
+        </ion-card-header>
+
+        <ion-list>
+          <ion-item>
+            <strong>Arrival Date:</strong> {{ record.arrival_date }}
+          </ion-item>
+          <ion-item>
+            <strong>Market: </strong>: {{ record.market }}, {{ record.district }}, {{ record.state }}
+          </ion-item>
+          <ion-item>
+            <strong>Min. Price</strong>: <ion-badge color="secondary">&#8377;{{ record.min_price }}/quintal</ion-badge> <ion-badge>&#8377;{{ record.min_price/100 }}/Kg</ion-badge>
+          </ion-item>
+          <ion-item>
+            <strong>Max. Price</strong>: <ion-badge color="secondary">&#8377;{{ record.max_price }}/quintal</ion-badge> <ion-badge>&#8377;{{ record.max_price/100 }}/Kg</ion-badge>
+          </ion-item>
+          <ion-item>
+            <strong>Modal Price</strong>: <ion-badge color="secondary">&#8377;{{ record.modal_price }}/quintal</ion-badge> <ion-badge>&#8377;{{ record.modal_price/100 }}/Kg</ion-badge>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
 </ion-content>
